@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="2Dpainter" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/2Dpainter" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:/Program Files (x86)/CodeBlocks/MinGW/bin" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/2Dpainter" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:/Program Files (x86)/CodeBlocks/MinGW/bin" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/include" />
+		</Compiler>
+		<Linker>
+			<Add library="freeglut" />
+			<Add library="opengl32" />
+			<Add library="glu32" />
+			<Add library="winmm" />
+			<Add library="gdi32" />
+			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/lib" />
+		</Linker>
+		<Unit filename="lib/app.cpp" />
+		<Unit filename="lib/app.h" />
+		<Unit filename="lib/circle.cpp" />
+		<Unit filename="lib/circle.h" />
+		<Unit filename="lib/color.cpp" />
+		<Unit filename="lib/color.h" />
+		<Unit filename="lib/cursor.cpp" />
+		<Unit filename="lib/cursor.h" />
+		<Unit filename="lib/drawable.cpp" />
+		<Unit filename="lib/drawable.h" />
+		<Unit filename="lib/event_manager.cpp" />
+		<Unit filename="lib/event_manager.h" />
+		<Unit filename="lib/file_util.cpp" />
+		<Unit filename="lib/file_util.h" />
+		<Unit filename="lib/input.cpp" />
+		<Unit filename="lib/input.h" />
+		<Unit filename="lib/line.cpp" />
+		<Unit filename="lib/line.h" />
+		<Unit filename="lib/main.h" />
+		<Unit filename="lib/polygon.cpp" />
+		<Unit filename="lib/polygon.h" />
+		<Unit filename="lib/pos.cpp" />
+		<Unit filename="lib/pos.h" />
+		<Unit filename="lib/record.cpp" />
+		<Unit filename="lib/record.h" />
+		<Unit filename="lib/tracer.cpp" />
+		<Unit filename="lib/tracer.h" />
+		<Unit filename="lib/util.cpp" />
+		<Unit filename="lib/util.h" />
+		<Unit filename="lib/vocab.h" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

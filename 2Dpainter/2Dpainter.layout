@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="lib\polygon.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="44" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\drawable.h" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="573" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="lib\file_util.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="75" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\app.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="15" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="156" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="15" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3402" topLine="107" />
+		</Cursor>
+	</File>
+	<File name="lib\color.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="60" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\input.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1106" topLine="41" />
+		</Cursor>
+	</File>
+	<File name="lib\drawable.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="310" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="lib\main.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1666" topLine="58" />
+		</Cursor>
+	</File>
+	<File name="lib\file_util.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3407" topLine="83" />
+		</Cursor>
+	</File>
+	<File name="lib\circle.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="590" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\color.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="241" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\circle.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="378" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\event_manager.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="16" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="229" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\line.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="615" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="lib\tracer.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="234" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="lib\util.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="964" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="lib\polygon.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="16" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="303" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\record.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="335" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\event_manager.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1059" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="lib\util.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="978" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\app.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="386" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="lib\pos.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="246" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\cursor.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2600" topLine="66" />
+		</Cursor>
+	</File>
+	<File name="lib\pos.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="135" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\input.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="926" topLine="44" />
+		</Cursor>
+	</File>
+	<File name="lib\record.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="573" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="lib\tracer.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="158" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="lib\vocab.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="701" topLine="8" />
+		</Cursor>
+	</File>
+	<File name="lib\cursor.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="438" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="lib\line.h" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="17" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="354" topLine="2" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

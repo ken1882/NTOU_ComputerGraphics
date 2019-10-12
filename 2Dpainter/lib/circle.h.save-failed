@@ -1,0 +1,20 @@
+#include "main.h"
+
+#ifndef INCLUDE_CIRCLE
+#define INCLUDE_CIRCLE
+struct Circle:public Drawable{
+    using Drawable::x;
+    using Drawable::y;
+    using Drawable::color;
+
+    static const int circle_pts = 100;
+    static const float angle_delta = 2.0 *  / circle_pts;
+
+    int radius;
+    Circle(int,int,int);
+    Circle(int,int,int,Color*);
+    Circle(int,int,int,Color**);
+    void set_radius(int);
+    void draw();
+};
+#endif // INCLUDE_CIRCLE

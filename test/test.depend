@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1570005915 source:f:\programming\gl\homework\test\main.cpp
+	<tchar.h>
+	<windows.h>
+	<iostream>
+

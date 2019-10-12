@@ -1,0 +1,179 @@
+#include "main.h"
+
+namespace Cursor{
+    int x, y;   // cursor position in client area
+    int gx, gy; // cursor position on screen
+
+    int last_dx, last_dy; // last cursor position in client area
+    int last_gx, last_gy; // last cursor position on screen
+
+    Color* pencil_color;
+    Color* eraser_color;
+    int ori_pen_color[4] = {0};
+
+    _Polygon* pencil_poly;  // pencil polygon object
+
+    Line* pencil_joiner; // Fix the pencil drawing gap
+                         // between each frame update
+
+    Circle* pencil_circle;
+
+    void init(int sx, int sy){
+        pencil_color = new Color(DefaultColor);
+        pencil_poly = new _Polygon(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT, &pencil_color);
+        pencil_poly -> anchor = 0.5;
+        pencil_joiner = new Line(0, 0, 0, 0, DEFAULT_WIDTH, &pencil_color);
+        eraser_color = new Color(0, 0, 0, 0);
+
+        pencil_circle = new Circle(0, 0, DEFAULT_WIDTH);
+
+        setPenType(PENTYPE_CIRCLE);
+        backup_pencil_color();
+        setMode(PENMODE_DRAW);
+        setPos(sx, sy);
+    }
+
+    void setPos(int _x, int _y){
+        x = _x;
+        y = _y;
+    }
+
+    void update(){
+        POINT pos;
+        GetCursorPos(&pos);
+        last_gx = gx; last_gy = gy;
+        gx = pos.x; gy = pos.y;
+        ScreenToClient(APP_HANDLE, &pos);
+        x = pos.x; y = pos.y;
+    }
+
+    void setPenType(int t){
+        pen_type = t;
+        int base = 0;
+        switch(t){
+        case PENTYPE_POLY:
+            pencil_joiner -> line_width = pencil_poly -> width;
+            break;
+        case PENTYPE_CIRCLE:
+            pencil_joiner -> line_width = pencil_circle -> radius * 2.5;
+            break;
+        }
+    }
+
+    void setMode(int m){
+        mode = m;
+        int _r = ori_pen_color[0];
+        int _g = ori_pen_color[1];
+        int _b = ori_pen_color[2];
+        int _a = ori_pen_color[3];
+        switch(mode){
+        case PENMODE_DRAW:
+            pencil_color -> change(_r, _g, _b, _a);
+            break;
+        case PENMODE_ERASER:
+            backup_pencil_color();
+            _r = eraser_color -> r * 0xff;
+            _g = eraser_color -> g * 0xff;
+            _b = eraser_color -> b * 0xff;
+            _a = eraser_color -> a * 0xff;
+            pencil_color -> change(_r, _g, _b, _a);
+            break;
+        }
+    }
+
+    void on_click(int vk, int stat, int cx, int cy){
+        if(is_in_input()){
+            Input::abort_input();
+            return ;
+        }
+        setPos(cx, cy);
+        if(stat == GLUT_DOWN){
+            switch(mode){
+            case PENMODE_DRAW:
+            case PENMODE_ERASER:
+                draw_pencil();
+                last_dx = x;
+                last_dy = y;
+                break;
+            }
+        }
+        else if(stat == GLUT_UP){
+            if(mode == PENMODE_DRAW || mode == PENMODE_ERASER){
+                Util::set_trace_point(Record::ACTION_PENCIL);
+            }
+        }
+    }
+
+    void on_drag(int cx, int cy){
+        setPos(cx, cy);
+        switch(mode){
+        case PENMODE_DRAW:
+        case PENMODE_ERASER:
+            draw_pencil();
+            fix_pencil_gap();
+            last_dx = x;
+            last_dy = y;
+            break;
+        }
+    }
+
+    int current_mode(){return mode;}
+
+    // pencil draw on canvas
+    void draw_pencil(){
+        switch(pen_type){
+        case PENTYPE_POLY:
+            pencil_poly -> setPos(x, y);
+            pencil_poly -> draw(DW_FLUSH);
+            break;
+        case PENTYPE_CIRCLE:
+            pencil_circle -> setPos(x, y);
+            pencil_circle -> draw(DW_FLUSH);
+            break;
+        }
+    }
+
+    // fill the pencil drag drawing gap
+    void fix_pencil_gap(){
+        pencil_joiner -> setPos(last_dx, last_dy);
+        pencil_joiner -> setDest(x, y);
+        pencil_joiner -> draw(DW_FLUSH);
+    }
+
+    // whether mouse is moved
+    bool is_moved(){
+        return last_gx != gx || last_gy != gy;
+    }
+
+    void terminate(){
+        delete pencil_color;
+        delete eraser_color;
+        delete pencil_poly;
+        delete pencil_joiner;
+        delete pencil_circle;
+    }
+
+    bool is_in_rect(RECT _rect, bool global){
+        int cx = global ? gx : x;
+        int cy = global ? gy : y;
+        if(cy < _rect.top){return false;}
+        if(cy > _rect.bottom){return false;}
+        if(cx < _rect.left){return false;}
+        if(cx > _rect.right){return false;}
+        return true;
+    }
+
+    void change_pencil_size(int pts){
+        pencil_poly -> resize(pts / 2, pts / 2);
+        pencil_circle -> set_radius(pts / 2);
+
+        setPenType(pen_type); // apply new point size on joiner
+    }
+
+    void backup_pencil_color(){
+        ori_pen_color[0] = pencil_color -> r * 0xff;
+        ori_pen_color[1] = pencil_color -> g * 0xff;
+        ori_pen_color[2] = pencil_color -> b * 0xff;
+        ori_pen_color[3] = pencil_color -> a * 0xff;
+    }
+}
