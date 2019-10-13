@@ -40,5 +40,7 @@ namespace Util{
     void set_trace_point(int, void* _obj);
     void popup_hint(const char*);
     void hide_hint();
+
+    void resize_window(int,int);
 }
 #endif // INCLUDE_UTIL

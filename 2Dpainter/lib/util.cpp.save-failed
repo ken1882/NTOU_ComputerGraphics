@@ -35,7 +35,6 @@ namespace Util{
 
     void init(){
         main_update();
-        set_trace_point(Record::ACTION_PENCIL);
     }
 
 
@@ -76,6 +75,13 @@ namespace Util{
         // glutPostRedisplay();
     }
 
+    void resize_window(int ww, int wh){
+        cout << "Resize window to " << ww << " x " << wh << '\n';
+        int wx = centralize(SCREEN_WIDTH, ww);
+        int wy = centralize(SCREEN_HEIGHT, wh);
+        MoveWindow(APP_HANDLE, wx, wy, ww, wh, 1);
+    }
+
     std::vector<int> get_screen_size(){
         return std::vector<int>({SCREEN_WIDTH, SCREEN_HEIGHT});
     }
@@ -86,8 +92,9 @@ namespace Util{
 
     bool save_image(){
         string full_path = FileUtil::prompt_save_dialog();
+        popup_hint(Vocab::SAVING_MSG);
+        Sleep(1);
         int len = full_path.length();
-
         if(len > 0){
             string img_type = "", base_path = "";
             int type_pos = full_path.find_last_of('.');
@@ -111,8 +118,12 @@ namespace Util{
             else{
                 FileUtil::save_as_bmp(full_path.c_str());
             }
+            hide_hint();
+            MessageBox(APP_HANDLE, Vocab::SAVE_OK_MSG, WINDOW_TITLE, MB_OK);
             return true;
         }
+        hide_hint();
+        MessageBox(APP_HANDLE, Vocab::SAVE_FAIL_MSG, WINDOW_TITLE, MB_OK);
         return false;
     }
 
@@ -140,13 +151,12 @@ namespace Util{
         printf("Load buffer (%d x %d)\n", bwidth, bheight);
 
         std::vector<GLuint> buffer(window_width * window_height, 0);
-
-        int
-        for(int i=0;i<bheight;++i){
-            for(int j=0;j<bwidth;++j){
-                if(j > )
-                int old_pos = i * bwidth + j;
-                int new_pos = i * window_width + j;
+        int lwidth  = std::min(bwidth, window_width);
+        int lheight = std::min(bheight, window_height);
+        for(int i=0;i<lheight;++i){
+            for(int j=0;j<lwidth;++j){
+                int old_pos = (bheight - 1 - i) * bwidth + j;
+                int new_pos = (window_height - 1 - i) * window_width + j;
                 buffer[new_pos] = _buffer[old_pos];
             }
         }
@@ -171,5 +181,43 @@ namespace Util{
         cout << "New trace point\n";
         int tp_idx = Tracer::push(Tracer::record_frame(_act));
         cout << "Trace point " << tp_idx << " saved\n";
+    }
+
+    bool load_image(){
+        cout << "Load image...\n";
+        string path = FileUtil::prompt_save_dialog(true);
+        int len = path.length();
+        if(len > 0){
+            cimg_library::CImg<unsigned char> img(path.c_str());
+            int mwidth  = std::min(SCREEN_WIDTH - 26, img.width());
+            int mheight = std::min(SCREEN_HEIGHT - 9, img.height());
+            std::vector<GLuint> buffer(mwidth * mheight, 0);
+            for(int i=0;i<mheight;++i){
+                for(int j=0;j<mwidth;++j){
+                    int pos = (mheight - 1 - i) * mwidth + j;
+                    int base  = 0;
+                    int shift = 0;
+                    for(int k=0;k<4;++k){
+                        base |= ((int)img(j, i, 0, k) << (shift*4));
+                        shift += 2;
+                    }
+                    buffer[pos] = base;
+                }
+            }
+            printf("%p\n", buffer[0]);
+            resize_window(mwidth+16, mheight+39);
+            load_buffer(buffer, mwidth, mheight);
+            set_trace_point(0);
+        }
+    }
+
+    void popup_hint(const char* msg){
+        force_update(3);
+        MessageBox(0, msg, WINDOW_TITLE, MB_OK);
+        force_update(3);
+    }
+
+    void hide_hint(){
+
     }
 }

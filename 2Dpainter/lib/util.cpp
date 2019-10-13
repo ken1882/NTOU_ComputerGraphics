@@ -75,6 +75,13 @@ namespace Util{
         // glutPostRedisplay();
     }
 
+    void resize_window(int ww, int wh){
+        cout << "Resize window to " << ww << " x " << wh << '\n';
+        int wx = centralize(SCREEN_WIDTH, ww);
+        int wy = centralize(SCREEN_HEIGHT, wh);
+        MoveWindow(APP_HANDLE, wx, wy, ww, wh, 1);
+    }
+
     std::vector<int> get_screen_size(){
         return std::vector<int>({SCREEN_WIDTH, SCREEN_HEIGHT});
     }
@@ -178,6 +185,48 @@ namespace Util{
 
     bool load_image(){
         cout << "Load image...\n";
+        string path = FileUtil::prompt_save_dialog(true);
+        int len = path.length();
+        if(len == 0){return false;}
+        cout << "Loading " << path << '\n';
+        cimg_library::CImg<unsigned char> img;
+        try{img.load(path.c_str());}
+        catch(cimg_library::CImgException){
+            MessageBox(APP_HANDLE, WINDOW_TITLE, Vocab::BAD_IMG, MB_OK);
+            return false;
+        }
+        int mwidth  = std::min(SCREEN_WIDTH - 26, img.width());
+        int mheight = std::min(SCREEN_HEIGHT - 9, img.height());
+        std::vector<GLuint> buffer(mwidth * mheight, 0);
+        string img_type = "";
+        int type_pos = path.find_last_of('.');
+        for(int i=0;i<len;++i){
+            if(i >= type_pos){img_type += path[i];}
+        }
+        printf("Loading %s image %d x %d\n", img_type.c_str(), mwidth, mheight);
+        int channel_num = 3;
+        if(img_type == ".png"){
+            channel_num = 4;
+        }
+        for(int i=0;i<mheight;++i){
+            for(int j=0;j<mwidth;++j){
+                int pos = (mheight - 1 - i) * mwidth + j;
+                int base  = 0;
+                int shift = 0;
+                for(int k=0;k<channel_num;++k){
+                    base |= ((int)img(j, i, 0, k) << (shift*4));
+                    shift += 2;
+                }
+                if(channel_num == 4 && base >> (6 * 4) == 0){
+                    base = 0;
+                }
+                buffer[pos] = base;
+            }
+        }
+        resize_window(mwidth+16, mheight+39);
+        load_buffer(buffer, mwidth, mheight);
+        set_trace_point(0);
+        return true;
     }
 
     void popup_hint(const char* msg){

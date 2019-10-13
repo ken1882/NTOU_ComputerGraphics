@@ -66,20 +66,27 @@ namespace FileUtil{
     }
 
     // Get file save dest. via WinDialog
-    string prompt_save_dialog(){
+    string prompt_save_dialog(bool load){
         OPENFILENAME ofn = {0};
         char buffer[MAX_PATH] = {0};
         ofn.lStructSize = sizeof(ofn);
         ofn.hwndOwner = APP_HANDLE;
         ofn.lpstrFilter = "PNG Image (*.png)\0*.png\0"
-            "JPEG Image (*.jpg;*.jpeg)\0*.jpg;.jpeg\0"
+            "JPEG Image (*.jpg;*.jpeg)\0*.jpg;.*jpeg\0"
             "Bitmap (24bits) (*.bmp)\0*.bmp\0"
             "All Files (*.*)\0*.*\0";
-
+        if(load){
+            ofn.lpstrFilter = "Image Files "
+            "(*.png;*.jpg;*.jpeg;*.bmp)\0"
+            "*.png;*.jpg;*.jpeg;*.bmp\0";
+        }
         ofn.lpstrFile = buffer;
         ofn.nMaxFile = MAX_PATH;
         ofn.Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST |
-                    OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT | OFN_NOCHANGEDIR;
+                    OFN_HIDEREADONLY | OFN_NOCHANGEDIR;
+        if(!load){
+            ofn.Flags |= OFN_OVERWRITEPROMPT;
+        }
         ofn.lpstrDefExt = "bmp";
 
         GetSaveFileName(&ofn);

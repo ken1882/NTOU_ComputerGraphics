@@ -35,5 +35,6 @@ namespace Vocab{
     static CSTR SAVE_FAIL_MSG = "Save failed...please retry later";
 
     static CSTR POLY_INPUT_PLACEHOLDER = "Enter the sides you want to draw here (3~8)";
+    static CSTR BAD_IMG = "Malformed Image!";
 }
 #endif // INCLUDE_VOCAB
