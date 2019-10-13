@@ -17,7 +17,7 @@ Circle::Circle(int _x, int _y, int _r, Color** col):
 
 void Circle::set_radius(int _r){
     radius = _r;
-    circle_pts = radius * 16;
+    circle_pts = radius * 8;
     angle_delta = 2 * PI / circle_pts;
 }
 

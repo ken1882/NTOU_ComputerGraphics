@@ -55,6 +55,8 @@ bool is_mouse_closing(MSG&);
 bool is_keybord_closing(MSG&);
 bool is_in_input();
 
+bool basic_update();
+void force_update(int);
 void main_update();
 void init_menu(HINSTANCE);
 
@@ -62,6 +64,7 @@ extern int menu_main;
 extern int menu_brush;
 extern int menu_file;
 extern int menu_btype;
+extern int menu_polygon;
 
 static const int MW_BCOLOR  = 1;
 static const int MW_BSIZE   = 2;
@@ -70,6 +73,12 @@ static const int MW_ERASER  = 4;
 static const int MW_PPOLY   = 5;
 static const int MW_PCIRCLE = 6;
 static const int MW_CLEAR   = 7;
+static const int MW_SAVE    = 8;
+static const int MW_LOAD    = 9;
+static const int MW_OLINE   = 10;
+static const int MW_OPOLY   = 11;
+static const int MW_OCURVE  = 12;
+
 
 extern HWND edit_input_handler;
 

@@ -32,7 +32,9 @@ namespace Input{
     bool is_press(keymap vk){return is_press((unsigned char)vk);}
     int is_repeat(keymap vk){return is_repeat((unsigned char)vk);}
 
-    void process_input(const char* placeholder){
+    void process_input(const char* placeholder, int ws){
+        if(ws == -1){ws = WSBaseEdit;}
+        SetWindowLongPtr(edit_input_handler, GWL_STYLE, ws);
         EnableWindow(edit_input_handler, 1);
         if(placeholder && placeholder != ""){
             SetWindowText(edit_input_handler, placeholder);
@@ -47,7 +49,6 @@ namespace Input{
         EnableWindow(edit_input_handler, 0);
         SetFocus(APP_HANDLE);
         ShowWindow(edit_input_handler, 0);
-        SetWindowLongPtr(edit_input_handler, GWL_STYLE, WSBaseEdit);
         glFlush();
         glutPostRedisplay();
     }

@@ -16,6 +16,7 @@ namespace Tracer{
     void restore_step(int);
     Record* pop();
     Record* current_record();
+    void reload_current_record();
     void terminate();
 }
 #endif // INCLUDE_TRACER

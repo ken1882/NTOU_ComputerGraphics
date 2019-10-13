@@ -10,6 +10,8 @@ namespace Cursor{
     const int PENMODE_NONE = 0;     // selective mode
     const int PENMODE_DRAW = 1;     // drawing mode
     const int PENMODE_ERASER = 2;
+    const int PENMODE_OBJ_LINE = 3; // Adding new line
+    const int PENMODE_OBJ_POLY = 4;
 
     // Brush types
     const int PENTYPE_POLY = 0;
@@ -20,6 +22,8 @@ namespace Cursor{
 
     extern int x, y, gx, gy;
     extern int last_x, last_y, last_gx, last_gy;
+    extern int obj_sx, obj_sy;
+    extern int poly_pts_cnt;
 
     extern Color* pencil_color;
     extern Color* eraser_color;
@@ -42,5 +46,14 @@ namespace Cursor{
     void terminate();
     void change_pencil_size(int);
     void backup_pencil_color();
+    void set_obj_bpos(int,int);
+    void update_object_preview();
+    void update_line_preview();
+    void update_polygon_preview();
+    void finalize_object();
+    void finalize_line(int,int);
+    void finalize_polygon();
+    void process_polygon_drawing(int);
+    void abort_polygon_drawing();
 }
 #endif // INCLUDE_CURSOR

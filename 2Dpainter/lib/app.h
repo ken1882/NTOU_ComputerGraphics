@@ -6,7 +6,8 @@
 namespace App{
     extern bool is_fullscreen;
     void update();
-    void clear_all(bool);
+    void clear_all(bool prompt=false);
+    void refresh();
     void on_display();
     void on_reshape(int, int);
     void on_keyboard(unsigned char, int, int);

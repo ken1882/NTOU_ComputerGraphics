@@ -26,6 +26,7 @@ namespace Util{
 
     bool get_bit_mask(int mask, int bit);
     bool save_image();
+    bool load_image();
     bool save_as_bmp(const char* path, HDC context = NULL, RECT area = {-1, -1, -1, -1});
     string prompt_save_dialog();
     string bmp2png(const char*, const char*);
@@ -37,5 +38,7 @@ namespace Util{
 
     void set_trace_point(int);
     void set_trace_point(int, void* _obj);
+    void popup_hint(const char*);
+    void hide_hint();
 }
 #endif // INCLUDE_UTIL

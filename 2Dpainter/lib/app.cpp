@@ -15,16 +15,22 @@ namespace App{
         }
     }
 
-    void clear_all(bool forced){
-        if(!forced){
+    void clear_all(bool prompt){
+        if(prompt){
             if(MessageBox(APP_HANDLE, Vocab::CLEAR_CONFIRM, WINDOW_TITLE, MB_OKCANCEL) != IDOK){
                 return ;
             }
         }
+        Cursor::abort_polygon_drawing();
         glClearColor(0.0, 0.0, 0.0, 0.0);
         glClear(GL_COLOR_BUFFER_BIT);
-        glFlush();
+        refresh();
         Util::set_trace_point(Record::ACTION_PENCIL);
+    }
+
+    void refresh(){
+        glFlush();
+        glutPostRedisplay();
     }
 
     void resize_window(int w, int h){
@@ -69,7 +75,7 @@ namespace App{
             process_menu_commands(vk, x, y);
         }
         else if(Input::is_trigger(VK_DELETE)){
-            clear_all(false);
+            clear_all();
         }
         else if(Input::is_trigger(Input::keymap::VK_T)){
             // reserved
@@ -104,8 +110,7 @@ namespace App{
 
     void reload_canvas(int nw, int nh){
         canvas.resize(nw * nh);
-        Record* rec = Tracer::current_record();
-        if(rec){rec -> restore_frame();}
+        Tracer::reload_current_record();
     }
 
     void update_input_window(){

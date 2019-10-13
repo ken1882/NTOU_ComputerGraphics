@@ -85,8 +85,9 @@ namespace Util{
 
     bool save_image(){
         string full_path = FileUtil::prompt_save_dialog();
+        popup_hint(Vocab::SAVING_MSG);
+        Sleep(1);
         int len = full_path.length();
-
         if(len > 0){
             string img_type = "", base_path = "";
             int type_pos = full_path.find_last_of('.');
@@ -110,8 +111,12 @@ namespace Util{
             else{
                 FileUtil::save_as_bmp(full_path.c_str());
             }
+            hide_hint();
+            MessageBox(APP_HANDLE, Vocab::SAVE_OK_MSG, WINDOW_TITLE, MB_OK);
             return true;
         }
+        hide_hint();
+        MessageBox(APP_HANDLE, Vocab::SAVE_FAIL_MSG, WINDOW_TITLE, MB_OK);
         return false;
     }
 
@@ -169,5 +174,19 @@ namespace Util{
         cout << "New trace point\n";
         int tp_idx = Tracer::push(Tracer::record_frame(_act));
         cout << "Trace point " << tp_idx << " saved\n";
+    }
+
+    bool load_image(){
+        cout << "Load image...\n";
+    }
+
+    void popup_hint(const char* msg){
+        force_update(3);
+        MessageBox(0, msg, WINDOW_TITLE, MB_OK);
+        force_update(3);
+    }
+
+    void hide_hint(){
+
     }
 }

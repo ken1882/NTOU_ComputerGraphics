@@ -20,6 +20,7 @@ int menu_main;
 int menu_brush;
 int menu_file;
 int menu_btype;
+int menu_object;
 HWND edit_input_handler;
 
 std::vector<GLuint> canvas;  // canvas information holder
@@ -75,9 +76,24 @@ void init(int argc, char* argv[]){
 }
 
 // basic handle updates
-void basic_update(){
-    Input::update();
-    Cursor::update();
+bool basic_update(){
+    MSG message;
+    if(GetMessage(&message, NULL, 0, 0)){
+        Sleep(0);
+        TranslateMessage(&message);
+        if(!is_window_closing(message)){
+            DispatchMessage(&message);
+        }
+        else{
+            if(MessageBox(APP_HANDLE, Vocab::QUIT_CONFIRM, WINDOW_TITLE, MB_OKCANCEL) == IDOK){
+                PostQuitMessage(0);
+            }
+        }
+        Input::update();
+        Cursor::update();
+        return true;
+    }
+    return false;
 }
 
 // main window updates
@@ -86,6 +102,13 @@ void main_update(){
     App::update();
 }
 
+void force_update(int cnt){
+    for(int i=0;i<cnt;++i){
+        SendMessage(APP_HANDLE, WM_MOUSEMOVE, 0, 0);
+        basic_update();
+        main_update();
+    }
+}
 
 void register_glut_callbacks(){
     glutDisplayFunc(App::on_display);
@@ -120,23 +143,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
     APP_DC = GetDC(APP_HANDLE);
     Util::init();
     init_menu(hInstance);
-    App::clear_all(true);
+    App::clear_all();
 
     // main message loop
     try{
-        MSG message;
-        while(GetMessage(&message, NULL, 0, 0)){
-            Sleep(0);
-            basic_update();
-            TranslateMessage(&message);
-            if(!is_window_closing(message)){
-                DispatchMessage(&message);
-            }
-            else{
-                if(MessageBox(APP_HANDLE, Vocab::QUIT_CONFIRM, WINDOW_TITLE, MB_OKCANCEL) == IDOK){
-                    PostQuitMessage(0);
-                }
-            }
+        while(basic_update()){
             main_update();
         }
     }
@@ -190,8 +201,9 @@ void init_menu(HINSTANCE parent_ins){
                                       APP_HANDLE, 0, parent_ins,0);
 
     menu_btype = glutCreateMenu(EventManager::envoke_menu_event);
-    glutAddMenuEntry(Vocab::POLYGON, MW_PPOLY);
+    glutAddMenuEntry(Vocab::SQUARE, MW_PPOLY);
     glutAddMenuEntry(Vocab::CIRCLE, MW_PCIRCLE);
+    glutAddMenuEntry(Vocab::LINE, MW_OLINE);
 
     menu_brush = glutCreateMenu(EventManager::envoke_menu_event);
     glutAddMenuEntry(Vocab::COLOR, MW_BCOLOR);
@@ -200,9 +212,15 @@ void init_menu(HINSTANCE parent_ins){
     glutAddMenuEntry(Vocab::ERASER, MW_ERASER);
     glutAddSubMenu(Vocab::TYPE, menu_btype);
 
+    menu_file = glutCreateMenu(EventManager::envoke_menu_event);
+    glutAddMenuEntry(Vocab::SAVE, MW_SAVE);
+    glutAddMenuEntry(Vocab::LOAD, MW_LOAD);
+
     menu_main = glutCreateMenu(EventManager::envoke_menu_event);
     glutAddMenuEntry(Vocab::CLEAR, MW_CLEAR);
     glutAddSubMenu(Vocab::BRUSH, menu_brush);
+    glutAddMenuEntry(Vocab::POLYGON, MW_OPOLY);
+    glutAddSubMenu(Vocab::FILE, menu_file);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 

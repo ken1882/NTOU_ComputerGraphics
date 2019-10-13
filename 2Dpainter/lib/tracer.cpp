@@ -62,6 +62,11 @@ namespace Tracer{
         return steps[current_index];
     }
 
+    void reload_current_record(){
+        if(current_index < 0){return ;}
+        steps[current_index] -> restore_frame();
+    }
+
     bool is_rear(){return current_index == last_index;}
     bool is_head(){return current_index <= 0;}
     bool is_empty(){return current_index == -1;}

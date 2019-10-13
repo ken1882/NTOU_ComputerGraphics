@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1570908465 source:f:\programming\gl\homework\2dpainter\main.cpp
+1570958973 source:f:\programming\gl\homework\2dpainter\main.cpp
 	"lib/main.h"
 
-1570908142 f:\programming\gl\homework\2dpainter\lib\main.h
+1570955146 f:\programming\gl\homework\2dpainter\lib\main.h
 	<windows.h>
 	<shellapi.h>
 	<iostream>
@@ -291,19 +291,19 @@
 1570087499 f:\programming\gl\homework\2dpainter\lib\cursor.hpp
 	"main.h"
 
-1570908754 source:f:\programming\gl\homework\2dpainter\lib\app.cpp
+1570957219 source:f:\programming\gl\homework\2dpainter\lib\app.cpp
 	"main.h"
 
 1570898523 source:f:\programming\gl\homework\2dpainter\lib\color.cpp
 	"main.h"
 
-1570905450 source:f:\programming\gl\homework\2dpainter\lib\cursor.cpp
+1570958928 source:f:\programming\gl\homework\2dpainter\lib\cursor.cpp
 	"main.h"
 
 1570896254 source:f:\programming\gl\homework\2dpainter\lib\drawable.cpp
 	"main.h"
 
-1570903416 source:f:\programming\gl\homework\2dpainter\lib\input.cpp
+1570958854 source:f:\programming\gl\homework\2dpainter\lib\input.cpp
 	"main.h"
 
 1570896134 source:f:\programming\gl\homework\2dpainter\lib\polygon.cpp
@@ -312,19 +312,19 @@
 1570166957 source:f:\programming\gl\homework\2dpainter\lib\pos.cpp
 	"main.h"
 
-1570908595 source:f:\programming\gl\homework\2dpainter\lib\util.cpp
+1570949229 source:f:\programming\gl\homework\2dpainter\lib\util.cpp
 	"main.h"
 
-1570895088 f:\programming\gl\homework\2dpainter\lib\input.h
+1570958805 f:\programming\gl\homework\2dpainter\lib\input.h
 	"main.h"
 
-1570894957 f:\programming\gl\homework\2dpainter\lib\util.h
+1570947464 f:\programming\gl\homework\2dpainter\lib\util.h
 	"main.h"
 
 1570092339 f:\programming\gl\homework\2dpainter\lib\pos.h
 	"main.h"
 
-1570902909 f:\programming\gl\homework\2dpainter\lib\cursor.h
+1570956470 f:\programming\gl\homework\2dpainter\lib\cursor.h
 	"main.h"
 
 1570896365 f:\programming\gl\homework\2dpainter\lib\color.h
@@ -336,7 +336,7 @@
 1570896152 f:\programming\gl\homework\2dpainter\lib\polygon.h
 	"main.h"
 
-1570908235 f:\programming\gl\homework\2dpainter\lib\app.h
+1570957172 f:\programming\gl\homework\2dpainter\lib\app.h
 	"main.h"
 
 1570439495 f:\programming\gl\homework\2dpainter\lib\file_util.h
@@ -351,30 +351,30 @@
 1570904744 source:f:\programming\gl\homework\2dpainter\lib\line.cpp
 	"main.h"
 
-1570908397 f:\programming\gl\homework\2dpainter\lib\vocab.h
+1570956508 f:\programming\gl\homework\2dpainter\lib\vocab.h
 	"main.h"
 
 1570588657 f:\programming\gl\homework\2dpainter\lib\record.h
 	"main.h"
 
-1570865564 f:\programming\gl\homework\2dpainter\lib\tracer.h
+1570950843 f:\programming\gl\homework\2dpainter\lib\tracer.h
 	"main.h"
 
 1570864074 source:f:\programming\gl\homework\2dpainter\lib\record.cpp
 	"main.h"
 
-1570865713 source:f:\programming\gl\homework\2dpainter\lib\tracer.cpp
+1570950880 source:f:\programming\gl\homework\2dpainter\lib\tracer.cpp
 	"main.h"
 
-1570897580 f:\programming\gl\homework\2dpainter\lib\event_manager.h
+1570955697 f:\programming\gl\homework\2dpainter\lib\event_manager.h
 	"main.h"
 
-1570908438 source:f:\programming\gl\homework\2dpainter\lib\event_manager.cpp
+1570958872 source:f:\programming\gl\homework\2dpainter\lib\event_manager.cpp
 	"main.h"
 
 1570902874 f:\programming\gl\homework\2dpainter\lib\circle.h
 	"main.h"
 
-1570903949 source:f:\programming\gl\homework\2dpainter\lib\circle.cpp
+1570945623 source:f:\programming\gl\homework\2dpainter\lib\circle.cpp
 	"main.h"
 

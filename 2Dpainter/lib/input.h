@@ -58,7 +58,7 @@ namespace Input{
     bool is_press(keymap);
     int is_repeat(keymap);
 
-    void process_input(const char* placeholder="");
+    void process_input(const char* placeholder="", int ws=-1);
     void abort_input();
     string retrieve_input();
 }
