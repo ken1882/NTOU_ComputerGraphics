@@ -21,6 +21,7 @@ int menu_brush;
 int menu_file;
 int menu_btype;
 int menu_object;
+int menu_polygon;
 HWND edit_input_handler;
 
 std::vector<GLuint> canvas;  // canvas information holder
@@ -216,10 +217,15 @@ void init_menu(HINSTANCE parent_ins){
     glutAddMenuEntry(Vocab::SAVE, MW_SAVE);
     glutAddMenuEntry(Vocab::LOAD, MW_LOAD);
 
+    menu_polygon = glutCreateMenu(EventManager::envoke_menu_event);
+    glutAddMenuEntry(Vocab::POLYGON_ADD, MW_OPOLY);
+    glutAddMenuEntry(Vocab::POLY_MODE_FILL, MW_MPOLY_FILL);
+    glutAddMenuEntry(Vocab::POLY_MODE_NOFILL, MW_MPOLY_NOFILL);
+
     menu_main = glutCreateMenu(EventManager::envoke_menu_event);
     glutAddMenuEntry(Vocab::CLEAR, MW_CLEAR);
     glutAddSubMenu(Vocab::BRUSH, menu_brush);
-    glutAddMenuEntry(Vocab::POLYGON, MW_OPOLY);
+    glutAddSubMenu(Vocab::POLYGON, menu_polygon);
     glutAddMenuEntry(Vocab::ADD_TEXT, MW_TEXT);
     glutAddSubMenu(Vocab::FILE, menu_file);
     glutAttachMenu(GLUT_RIGHT_BUTTON);

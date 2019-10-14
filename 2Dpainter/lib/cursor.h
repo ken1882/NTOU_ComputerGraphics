@@ -25,6 +25,7 @@ namespace Cursor{
     extern int obj_sx, obj_sy;
     extern int menu_x, menu_y;
     extern int poly_pts_cnt;
+    extern bool poly_filled;
 
     extern Color* pencil_color;
     extern Color* eraser_color;

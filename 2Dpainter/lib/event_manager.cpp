@@ -20,6 +20,8 @@ namespace EventManager{
         case MW_OCURVE:
         case MW_OPOLY:
         case MW_TEXT:
+        case MW_MPOLY_FILL:
+        case MW_MPOLY_NOFILL:
             return envoke_object_event();
         case MW_SAVE:
         case MW_LOAD:
@@ -126,6 +128,12 @@ namespace EventManager{
         case MW_TEXT:
             placeholder = Vocab::TXT_INPUT_PLACEHOLDER;
             Input::process_input(placeholder.c_str());
+            break;
+        case MW_MPOLY_FILL:
+            Cursor::poly_filled = true;
+            break;
+        case MW_MPOLY_NOFILL:
+            Cursor::poly_filled = false;
             break;
         }
     }

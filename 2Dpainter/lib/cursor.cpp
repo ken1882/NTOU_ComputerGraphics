@@ -14,6 +14,7 @@ namespace Cursor{
     Color* eraser_color;
     int ori_pen_color[4] = {0};
 
+
     _Polygon* pencil_poly;  // pencil polygon object
 
     Line* pencil_joiner; // Fix the pencil drawing gap
@@ -24,6 +25,7 @@ namespace Cursor{
 
     std::vector<POINT> obj_pts; // Object points
     int poly_pts_cnt = -1;      // Object points count
+    bool poly_filled = true;
 
     void init(int sx, int sy){
         pencil_color = new Color(DefaultColor);
@@ -272,6 +274,7 @@ namespace Cursor{
     }
 
     void abort_polygon_drawing(){
+        glPolygonMode(GL_FRONT, GL_FILL);
         Tracer::reload_current_record();
         obj_pts.clear();
         App::refresh();
@@ -282,7 +285,13 @@ namespace Cursor{
         float r = pencil_color -> r;
         float g = pencil_color -> g;
         float b = pencil_color -> b;
+        auto pmode = GL_FILL;
+        if(!poly_filled){
+            pmode = GL_LINE;
+            glLineWidth(pencil_joiner -> line_width);
+        }
         glColor3f(r, g, b);
+        glPolygonMode(GL_FRONT, pmode);
         glBegin(GL_POLYGON);
             for(auto pt:obj_pts){
                 glVertex2i(pt.x, window_height - pt.y);

@@ -38,5 +38,9 @@ namespace Vocab{
     static CSTR POLY_INPUT_PLACEHOLDER = "Enter the sides you want to draw here (3~8)";
     static CSTR BAD_IMG = "Malformed Image!";
     static CSTR TXT_INPUT_PLACEHOLDER = "Enter the text here (currently only support ASCII characters)";
+
+    static CSTR POLYGON_ADD = "Add new polygon";
+    static CSTR POLY_MODE_FILL = "Mode: Fill";
+    static CSTR POLY_MODE_NOFILL = "Mode: No fill";
 }
 #endif // INCLUDE_VOCAB

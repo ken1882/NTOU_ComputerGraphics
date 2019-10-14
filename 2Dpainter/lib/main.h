@@ -79,6 +79,8 @@ static const int MW_OLINE   = 10;
 static const int MW_OPOLY   = 11;
 static const int MW_OCURVE  = 12;
 static const int MW_TEXT    = 13;
+static const int MW_MPOLY_FILL = 14;
+static const int MW_MPOLY_NOFILL = 15;
 
 extern HWND edit_input_handler;
 
