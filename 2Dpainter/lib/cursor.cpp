@@ -8,6 +8,7 @@ namespace Cursor{
     int last_gx, last_gy; // last cursor position on screen
 
     int obj_sx, obj_sy;   // Object starting position
+    int menu_x, menu_y;   // GLUT menu position
 
     Color* pencil_color;
     Color* eraser_color;
@@ -57,6 +58,11 @@ namespace Cursor{
         x = pos.x; y = pos.y;
         if(obj_sx != -1 && is_moved()){
             update_object_preview();
+        }
+
+        if(Input::is_trigger(Input::keymap::VK_MOUSE2)){
+            menu_x = x;
+            menu_y = y;
         }
     }
 

@@ -33,8 +33,10 @@ namespace Vocab{
     static CSTR SAVING_MSG = "Saving image, please wait...";
     static CSTR SAVE_OK_MSG = "Save completed!";
     static CSTR SAVE_FAIL_MSG = "Save failed...please retry later";
+    static CSTR ADD_TEXT = "Insert text here";
 
     static CSTR POLY_INPUT_PLACEHOLDER = "Enter the sides you want to draw here (3~8)";
     static CSTR BAD_IMG = "Malformed Image!";
+    static CSTR TXT_INPUT_PLACEHOLDER = "Enter the text here (currently only support ASCII characters)";
 }
 #endif // INCLUDE_VOCAB

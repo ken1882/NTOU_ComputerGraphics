@@ -23,6 +23,7 @@ namespace Cursor{
     extern int x, y, gx, gy;
     extern int last_x, last_y, last_gx, last_gy;
     extern int obj_sx, obj_sy;
+    extern int menu_x, menu_y;
     extern int poly_pts_cnt;
 
     extern Color* pencil_color;

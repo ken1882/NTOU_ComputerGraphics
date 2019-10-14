@@ -238,4 +238,17 @@ namespace Util{
     void hide_hint(){
 
     }
+
+    string str_chomp(string in_str){
+        int len = in_str.length();
+        char ch = in_str[len-1];
+        while(ch == '\r' || ch == '\n'){
+            len -= 1;
+            ch = in_str[len-1];
+        }
+        char buffer[0xff] = {0};
+        in_str.copy(buffer, len, 0);
+        string ret = buffer;
+        return ret;
+    }
 }

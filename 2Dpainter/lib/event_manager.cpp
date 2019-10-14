@@ -19,6 +19,7 @@ namespace EventManager{
         case MW_OLINE:
         case MW_OCURVE:
         case MW_OPOLY:
+        case MW_TEXT:
             return envoke_object_event();
         case MW_SAVE:
         case MW_LOAD:
@@ -34,6 +35,8 @@ namespace EventManager{
             return change_pencil_size();
         case MW_OPOLY:
             return process_polygon_drawing();
+        case MW_TEXT:
+            return process_text_insert();
         }
     }
 
@@ -120,7 +123,29 @@ namespace EventManager{
         case MW_OPOLY:
             placeholder = Vocab::POLY_INPUT_PLACEHOLDER;
             Input::process_input(placeholder.c_str(), WSSizeEdit);
+        case MW_TEXT:
+            placeholder = Vocab::TXT_INPUT_PLACEHOLDER;
+            Input::process_input(placeholder.c_str());
             break;
         }
+    }
+
+    void process_text_insert(){
+        float r = Cursor::pencil_color -> r;
+        float g = Cursor::pencil_color -> g;
+        float b = Cursor::pencil_color -> b;
+        int mx  = Cursor::menu_x;
+        int my  = Cursor::menu_y;
+        glColor3f(r, g, b);
+        glRasterPos2i(mx, window_height - my);
+        string in_str = Input::retrieve_input();
+        in_str = Util::str_chomp(in_str);
+        auto font = GLUT_BITMAP_9_BY_15;
+        int len = in_str.length();
+        for(int i=0;i<len;++i){
+            glutBitmapCharacter(font, in_str[i]);
+        }
+        App::refresh();
+        Util::set_trace_point(0);
     }
 }

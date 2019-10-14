@@ -42,5 +42,6 @@ namespace Util{
     void hide_hint();
 
     void resize_window(int,int);
+    string str_chomp(string);
 }
 #endif // INCLUDE_UTIL

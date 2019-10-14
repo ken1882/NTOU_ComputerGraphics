@@ -12,6 +12,7 @@ namespace EventManager{
     void change_pencil_color();
     void change_pencil_size();
     void process_polygon_drawing();
+    void process_text_insert();
 }
 
 #endif // INCLUDE_EVENTMANAGER

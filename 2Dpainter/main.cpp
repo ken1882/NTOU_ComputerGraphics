@@ -220,6 +220,7 @@ void init_menu(HINSTANCE parent_ins){
     glutAddMenuEntry(Vocab::CLEAR, MW_CLEAR);
     glutAddSubMenu(Vocab::BRUSH, menu_brush);
     glutAddMenuEntry(Vocab::POLYGON, MW_OPOLY);
+    glutAddMenuEntry(Vocab::ADD_TEXT, MW_TEXT);
     glutAddSubMenu(Vocab::FILE, menu_file);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
