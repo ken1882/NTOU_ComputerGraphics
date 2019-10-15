@@ -9,6 +9,12 @@ namespace EventManager{
         case MW_CLEAR:
             App::clear_all();
             break;
+        case MW_UNDO:
+            Tracer::restore_last();
+            break;
+        case MW_REDO:
+            Tracer::restore_next();
+            break;
         case MW_BCOLOR:
         case MW_BSIZE:
         case MW_PENCIL:
@@ -125,6 +131,7 @@ namespace EventManager{
         case MW_OPOLY:
             placeholder = Vocab::POLY_INPUT_PLACEHOLDER;
             Input::process_input(placeholder.c_str(), WSSizeEdit);
+            break;
         case MW_TEXT:
             placeholder = Vocab::TXT_INPUT_PLACEHOLDER;
             Input::process_input(placeholder.c_str());

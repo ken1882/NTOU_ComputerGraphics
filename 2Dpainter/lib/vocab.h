@@ -42,5 +42,7 @@ namespace Vocab{
     static CSTR POLYGON_ADD = "Add new polygon";
     static CSTR POLY_MODE_FILL = "Mode: Fill";
     static CSTR POLY_MODE_NOFILL = "Mode: No fill";
+    static CSTR UNDO = "Undo";
+    static CSTR REDO = "Redo";
 }
 #endif // INCLUDE_VOCAB
